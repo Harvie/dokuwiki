@@ -113,6 +113,12 @@ class admin_plugin_config extends DokuWiki_Admin_Plugin {
       formSecurityToken();
       $this->_print_h1('dokuwiki_settings', $this->getLang('_header_dokuwiki'));
 
+      if (!$this->_config->locked) {
+        ptln('  <input type="hidden" name="save"   value="1" />');
+        ptln('  <input type="submit" name="submit" class="button" value="'.$lang['btn_save'].'" accesskey="s" />');
+        ptln('  <input type="reset" class="button" value="'.$lang['btn_reset'].'" />');
+      }
+
       $undefined_settings = array();
       $in_fieldset = false;
       $first_plugin_fieldset = true;
